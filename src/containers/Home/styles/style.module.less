@@ -1,0 +1,30 @@
+.home {
+  width: 100%;
+  height: 100%;
+  :global {
+    .am-tabs-content-wrap {
+      flex: 1 1 auto;
+    }
+
+    .am-tabs-tab-bar-wrap {
+      flex: 0 0 auto;
+    }
+
+    //.am-tabs-pane-wrap {
+    //  padding-bottom: 35 * @hd;
+    //  box-sizing: border-box;
+    //}
+
+    .am-tabs-default-bar-tab {
+      height: 35 * @hd;
+      line-height: 35 * @hd;
+      white-space: nowrap;
+      font-size: 14 * @hd;
+
+      &.am-tabs-default-bar-tab-active {
+        background-color: @brand-primary;
+        color: #fff;
+      }
+    }
+  }
+}

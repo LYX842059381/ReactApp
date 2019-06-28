@@ -1,0 +1,63 @@
+.root {
+  position: relative;
+
+  &.no-child {
+    min-height: 200 * @hd;
+
+    .container {
+      top: 45%;
+    }
+  }
+
+  &.fill {
+    height: 100%;
+  }
+}
+
+.container {
+  z-index: 2;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 1px);
+  pointer-events: none;
+  padding: 15 * @hd;
+  box-sizing: border-box;
+}
+
+.text {
+  margin-top: 6 * @hd;
+  margin-bottom: 0;
+  font-size: 14 * @hd;
+  line-height: 1.5;
+}
+
+.toast {
+  background-color: rgba(58, 58, 58, 0.9);
+  border-radius: 5 * @hd;
+
+  .text {
+    color: #fff;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.closeable {
+  position: absolute;
+  top: -13 * @hd;
+  right: -13 * @hd;
+  padding: 4 * @hd;
+  box-sizing: border-box;
+  pointer-events: all;
+
+  .icon {
+    border-radius: 50%;
+    background-color: #777;
+    width: 22 * @hd;
+    height: 22 * @hd;
+  }
+}

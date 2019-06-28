@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico"/>
+  <meta name="theme-color" content="#000000"/>
+  <!--
+    manifest.json provides metadata used when your web app is installed on a
+    user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+  -->
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json"/>
+  <!--
+    Notice the use of %PUBLIC_URL% in the tags above.
+    It will be replaced with the URL of the `public` folder during the build.
+    Only files inside the `public` folder can be referenced from the HTML.
+
+    Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+    work correctly both with client-side routing and a non-root public URL.
+    Learn how to configure a non-root public URL by running `npm run build`.
+  -->
+  <title>React App</title>
+  <script>
+    /* 高清方案设置代码，详情见 https://github.com/ant-design/ant-design-mobile/wiki/antd-mobile-0.8-%E4%BB%A5%E4%B8%8A%E7%89%88%E6%9C%AC%E3%80%8C%E9%AB%98%E6%B8%85%E3%80%8D%E6%96%B9%E6%A1%88%E8%AE%BE%E7%BD%AE */
+    ;(function (win, lib) {
+      var doc = win.document;
+      var docEl = doc.documentElement;
+
+      var devicePixelRatio = win.devicePixelRatio;
+      var dpr = 1; // 物理像素与逻辑像素的对应关系
+      var scale = 1; // css像素缩放比率
+      // 设置viewport
+      function setViewport() {
+        var isIPhone = !!win.navigator.appVersion.match(/iphone/gi);
+        if (isIPhone) {
+          if (devicePixelRatio >= 3) {
+            dpr = 3;
+          }
+          else if (devicePixelRatio >= 2) {
+            dpr = 2;
+          }
+          else {
+            dpr = 1;
+          }
+        }
+        win.devicePixelRatioValue = dpr;
+        //win.devicePixelRatio = win.devicePixelRatio*win.devicePixelRatio;
+        scale = 1 / dpr;
+        var metaEl = doc.createElement('meta');
+        metaEl.setAttribute('name', 'viewport');
+        metaEl.setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        if (docEl.firstElementChild) {
+          docEl.firstElementChild.appendChild(metaEl);
+        }
+        else {
+          var wrap = doc.createElement('div');
+          wrap.appendChild(metaEl);
+          doc.write(wrap.innerHTML);
+        }
+      }
+
+      setViewport();
+      var newBase = 100;
+
+      function setRem() {
+        var visualView = Math.min(docEl.getBoundingClientRect().width, lib.maxWidth * dpr); // visual viewport
+        newBase = 100 * visualView / lib.desinWidth;
+        docEl.style.fontSize = newBase + 'px';
+      }
+
+      var tid;
+      lib.desinWidth = 640;
+      lib.baseFont = 18;
+      lib.maxWidth = 540;
+      lib.init = function () {
+        win.addEventListener('resize', function () {
+          clearTimeout(tid);
+          tid = setTimeout(setRem, 300);
+        }, false);
+        /*win.addEventListener('onorientationchange', function () {
+         clearTimeout(tid);
+         tid = setTimeout(setRem, 300);
+         }, false);*/
+        win.addEventListener('pageshow', function (e) {
+          if (e.persisted) {
+            clearTimeout(tid);
+            tid = setTimeout(setRem, 300);
+          }
+        }, false);
+        if (doc.readyState === 'complete') {
+          doc.body.style.fontSize = lib.baseFont * dpr + 'px';
+        }
+        else {
+          doc.addEventListener('DOMContentLoaded', function (e) {
+            doc.body.style.fontSize = lib.baseFont * dpr + 'px';
+          }, false);
+        }
+        setRem();
+        docEl.setAttribute('data-dpr', dpr);
+      };
+    })(window, window['adaptive'] || (window['adaptive'] = {}));
+
+
+    window['adaptive'].desinWidth = 750;
+    window['adaptive'].baseFont = 18;
+    window['adaptive'].maxWidth = 480;
+    window['adaptive'].init();
+  </script>
+</head>
+<body style="touch-action: none">
+<noscript>You need to enable JavaScript to run this app.</noscript>
+<div id="root"></div>
+<!--
+  This HTML file is a template.
+  If you open it directly in the browser, you will see an empty page.
+
+  You can add webfonts, meta tags, or analytics to this file.
+  The build step will place the bundled scripts into the <body> tag.
+
+  To begin the development, run `npm start` or `yarn start`.
+  To create a production bundle, use `npm run build` or `yarn build`.
+-->
+</body>
+</html>

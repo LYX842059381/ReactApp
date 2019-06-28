@@ -1,0 +1,62 @@
+@import "../../../../public/mixins.less";
+
+.content {
+  overflow: hidden;
+  padding: 0 10 * @hd;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+:global {
+  .markdown-text {
+    &:first-child {
+      margin-top: 0;
+    }
+
+    p {
+      font-size: 15 * @hd;
+      line-height: 1.7em;
+      overflow: auto;
+    }
+
+    li {
+      line-height: 2em;
+      font-size: 14 * @hd;
+    }
+  }
+
+  blockquote {
+    padding: 0 0 0 15 * @hd;
+    margin: 0 0 20 * @hd;
+    border-left: 5 * @hd solid #eee;
+  }
+
+  img {
+    height: auto;
+    max-width: 100%;
+    vertical-align: middle;
+    border: 0;
+  }
+
+  a {
+    color: #08c;
+  }
+
+  .prettyprint {
+    line-height: 22 * @hd;
+    word-break: break-all;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-size: 14 * @hd;
+    border-radius: 0;
+    padding: 0 15 * @hd;
+    border: none;
+    margin: 20 * @hd -10 * @hd;
+    border-width: 1 * @hd 0;
+    background: #f7f7f7;
+    tab-size: 4;
+  }
+
+
+}
+

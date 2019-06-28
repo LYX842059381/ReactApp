@@ -1,0 +1,61 @@
+.item {
+  padding: 10 * @hd;
+  box-sizing: border-box;
+  background-color: #fff;
+
+  & + .item {
+    border-top: 1Px solid #f0f0f0;
+  }
+}
+
+.center {
+  padding-left: 10 * @hd;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.text {
+  margin-left: 5 * @hd;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14 * @hd;
+  color: #333;
+  line-height: 17 * @hd;
+  margin: 0;
+  font-weight: 400;
+
+  &:visited {
+    color: #888;
+  }
+}
+
+.info {
+  line-height: 10 * @hd;
+  margin: 0;
+
+  > span {
+    font-size: 10 * @hd;
+  }
+
+  .reply {
+    color: #9e78c0;
+  }
+
+  .count {
+    color: #b4b4b4;
+  }
+}
+
+.time {
+  font-size: 11 * @hd;
+  color: #778087;
+  min-width: 100px;
+}

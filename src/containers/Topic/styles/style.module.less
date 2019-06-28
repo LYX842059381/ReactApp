@@ -1,0 +1,32 @@
+@import "../../../public/mixins.less";
+
+.topic {
+  margin: 10 * @hd 0;
+}
+
+.content {
+  overflow: hidden;
+  padding: 0 10 * @hd;
+  box-sizing: border-box;
+  background-color: #fff;
+
+  :global {
+    .markdown-text {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      p {
+        font-size: 15 * @hd;
+        line-height: 1.7em;
+        overflow: auto;
+      }
+    }
+  }
+}
+
+blockquote {
+  padding: 0 0 0 15 * @hd;
+  margin: 0 0 20 * @hd;
+  border-left: 5 * @hd solid #eee;
+}
